@@ -22,6 +22,7 @@ reportUnknownMemberType = "none"
 reportUnknownParameterType = "none"
 reportUnknownArgumentType = "none"
 reportUnusedCallResult = "none"
+reportUnknownDecoratorType = false
 
 [tool.ruff]
 line-length = 100

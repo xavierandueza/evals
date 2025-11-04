@@ -88,3 +88,18 @@ For example:
 * A tool call
 * RAG Retrieval
 * Printing "Hello World"
+
+To run a simple visualization of traces and spans please run the:
+
+```py
+uv run mlflow/traces_and_spans.py
+```
+
+## Prompts?
+
+You can see that there are prompts you can register via MLFlow. Personally I've never used this before and even MLFlow considers it optional - so we'll skip it. Basically it just lets you save prompts and view them later.
+There's a couple reasons I don't use prompts:
+
+1. What if you have a multi-step with more than 1 prompt?
+2. Git is fine for prompt versioning usually.
+3. Prompts are only 1 parameter you're comparing across and can be tightly bound to the specific model (teaser for later)

@@ -8,7 +8,18 @@ mlflow.set_experiment(experiment_name="traces_and_spans")
 
 @mlflow.trace()
 def mock_embedding_retrieval(query: str, k: int) -> list[str]:
+    """This mocks a vector search and retrieval. This is a span in a trace.
+
+    Args:
+        query: query to embed
+        k: Number of similar results to return
+
+    Returns:
+        List of related embeddings (size k)
+    """
     time.sleep(1)
+
+    # We can add feedback to spans within a trace
     return ["Retrieved context"] * k
 
 
