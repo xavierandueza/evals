@@ -29,6 +29,17 @@ chmod +x ./server_setup.sh
 
 You're now running MLFlow locally! This will save your results to a local SQLite database.
 
+### Setting up API key
+
+First make your .env.example from the .env file:
+
+```sh
+cp .env.example .env
+```
+
+Then open up and paste in your openrouter API key. To get one go to openrouter and make an API key and add some credit.
+If you don't want to do that, it's totally fine!! You'll have results in the SQLite that you've cloned anyway.
+
 ## Understanding MLFlow's data hierarchy
 
 To start understanding MLFlow (and many similar frameworks) it's worthwhile understanding the way that they store information.
@@ -69,13 +80,13 @@ A **parameter** is something you want to know a run has - for example temperatur
 
 A **metric** on the other hand is the result of what you've done - for example accuracy, cost per call...
 
-Run the `mlflow/understanding_experiments.py` file for a very simple demonstration of this.
+kRun the `mlflow/understanding_experiments.py` file for a very simple demonstration of this.
 
 ```sh
 uv run mlflow/understanding_experiments.py
 ```
 
-## Traces and Spans
+### Traces and Spans
 
 Traces can be best considered _the entirety of the AI call that is attempting to solve the problem._
 
@@ -95,7 +106,7 @@ To run a simple visualization of traces and spans please run the:
 uv run mlflow/traces_and_spans.py
 ```
 
-## Prompts?
+### Prompts?
 
 You can see that there are prompts you can register via MLFlow. Personally I've never used this before and even MLFlow considers it optional - so we'll skip it. Basically it just lets you save prompts and view them later.
 There's a couple reasons I don't use prompts:
@@ -103,3 +114,5 @@ There's a couple reasons I don't use prompts:
 1. What if you have a multi-step with more than 1 prompt?
 2. Git is fine for prompt versioning usually.
 3. Prompts are only 1 parameter you're comparing across and can be tightly bound to the specific model (teaser for later)
+
+## Feature 1 - Simple GenAI Response
