@@ -143,3 +143,25 @@ uv run feature_1/predefined_scorers.py
 ```
 
 By passing in a predict function, alongside the dataset (which has expectations) we can use some of their in-builts.
+
+### Guideline-Based Scorers
+
+Guideline-based scorers give pass/fail results. You define what the guideline is.
+
+This is particularly useful for catching things like:
+
+* "The response does not include any financial or investment advice, just information about their accounts.".
+* "If the query is asking about discounts or pricing, instructs the user that they cannot discuss those matters and should go to the pricing page"
+
+It's also good for things like:
+
+* "The answer is in an unordered dot point format"
+* "The tone of the answer is professional"
+
+Generally I wouldn't recommend using guidelines for _accuracy metrics_ - you're better off using a template based scorer for that purpose, or the pre-defined correctness scorer.
+
+To checkout some guideline-based scoring run:
+
+```sh
+uv run feature_1/guideline_scorers.py
+```
