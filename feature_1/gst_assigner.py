@@ -19,6 +19,7 @@ class GSTType(str, Enum):
 class GSTAssignmentResponse(BaseModel):
     reasoning: str
     gst_type: GSTType
+    confidence: float
 
 
 async def assign_gst_to_transaction(
@@ -38,7 +39,7 @@ async def assign_gst_to_transaction(
 
 
 if __name__ == "__main__":
-    system_message = "You must assign the transaction to one of the gsy types and give reasoning"
+    system_message = "You must assign the transaction to one of the gsy types and give reasoning. Also state how confident you are (0-1) after you've done your assignment"
     user_message = (
         "The transaction has description 'Lollies from supermarket' and was for price $10"
     )

@@ -3,6 +3,8 @@ import mlflow
 from feature_1.gst_assigner import assign_gst_to_transaction, GSTAssignmentResponse
 from feature_1.dataset import dataset
 from mlflow.genai.scorers import Correctness, Safety, Guidelines
+from mlflow.genai.judges import make_judge
+
 
 MODEL_NAME: str = "deepseek/deepseek-chat-v3.1"
 PROMPT_NUMBER: int = 1
@@ -10,7 +12,7 @@ TEMPERATURE: float = 0.0
 SCORER_MODEL: str = "deepseek/deepseek-chat-v3.1"
 
 mlflow.set_tracking_uri(uri="http://localhost:5001")
-mlflow.set_experiment(experiment_name="feature_1_guideline_scorers")
+mlflow.set_experiment(experiment_name="feature_1_template_scorers")
 
 
 def predict_fn(description: str, amount: float) -> GSTAssignmentResponse:
@@ -26,6 +28,17 @@ def predict_fn(description: str, amount: float) -> GSTAssignmentResponse:
     response = asyncio.run(task)
     return response
 
+
+quality_judge = make_judge(
+    name="confidence",
+    instructions=(
+        "The gst assignment has a confidence level. You must assign the result as either being confidently correct, confidently incorrect, unconfidently correct, and unconfidently incorrect.\n"
+        "The input is:\n{{ inputs }}\nOutput is: {{ outputs }}\n"
+        "The expected outputs are:\n {{ expectations }}\n"
+        "Given these details rate as one of 'confidently_correct', 'confidently_incorrect', 'unconfidently_correct', 'unconfidently_incorrect'."
+    ),
+    model="openrouter:/" + SCORER_MODEL,
+)
 
 if __name__ == "__main__":
     with mlflow.start_run():
@@ -51,5 +64,6 @@ if __name__ == "__main__":
                     model="openrouter:/" + SCORER_MODEL,
                     guidelines="Reasoning is in an unordered list format",
                 ),
+                quality_judge,
             ],
         )

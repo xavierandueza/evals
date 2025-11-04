@@ -165,3 +165,17 @@ To checkout some guideline-based scoring run:
 ```sh
 uv run feature_1/guideline_scorers.py
 ```
+
+### Template-Based Scorers
+
+Essentially these just let you define more custom information and custom types around your responses.
+
+For our example, a good one is to have something that understands our confidence level that we get back.
+
+In mlflow you do this with the `make_judge` api.
+
+To see what we've done for a custom template evaluator checkout and run:
+
+```sh
+uv run feature_1/template_scorers.py
+```

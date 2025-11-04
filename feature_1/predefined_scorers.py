@@ -14,8 +14,8 @@ mlflow.set_experiment(experiment_name="feature_1_predefined_scorers")
 
 
 def predict_fn(description: str, amount: float) -> GSTAssignmentResponse:
-    system_message = "You must assign the transaction to one of the gst types and give reasoning"
     user_message = f"Description: {description}\nPrice: ${amount}"
+    system_message = "You must assign the transaction to one of the gsy types and give reasoning. Also state how confident you are (0-1) after you've done your assignment"
 
     task = assign_gst_to_transaction(
         system_message=system_message,
@@ -29,6 +29,10 @@ def predict_fn(description: str, amount: float) -> GSTAssignmentResponse:
 
 if __name__ == "__main__":
     with mlflow.start_run():
+        mlflow.log_param(key="model", value=MODEL_NAME)
+        mlflow.log_param(key="prompt_version", value=PROMPT_NUMBER)
+        mlflow.log_param(key="temperature", value=TEMPERATURE)
+        mlflow.log_param(key="scorer_model", value=SCORER_MODEL)
         mlflow.genai.evaluate(
             data=dataset,
             predict_fn=predict_fn,
