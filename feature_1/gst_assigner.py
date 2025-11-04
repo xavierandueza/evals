@@ -1,5 +1,5 @@
 import asyncio
-from litellm import acompletion
+import litellm
 from pydantic import BaseModel
 from enum import Enum
 from dotenv import load_dotenv
@@ -24,7 +24,7 @@ class GSTAssignmentResponse(BaseModel):
 async def assign_gst_to_transaction(
     system_message: str, user_message: str, model: str, temperature: float
 ) -> GSTAssignmentResponse:
-    response = await acompletion(
+    response = await litellm.acompletion(
         model="openrouter/" + model,
         messages=[
             {"role": "system", "content": system_message},

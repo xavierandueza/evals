@@ -115,4 +115,31 @@ There's a couple reasons I don't use prompts:
 2. Git is fine for prompt versioning usually.
 3. Prompts are only 1 parameter you're comparing across and can be tightly bound to the specific model (teaser for later)
 
-## Feature 1 - Simple GenAI Response
+## Feature 1 - Simple GenAI Categorization
+
+The `feature_1/gst_assigner.py` file contains the API call logic for a single API call to be made.
+It can be run directly with:
+
+```sh
+uv run feature_1/gst_assigner.py
+```
+
+This is used in the experiment.py file.
+
+### Automated trace logging
+
+You can actually automatically get the traces to mlflow without manually writing decorators. I usually write decorators myself because it's easier to control for experiments - check out the [mlflow docs](https://mlflow.org/docs/latest/genai/tracing/#one-line-auto-tracing-integrations) on this.
+
+### Using Pre-defined scorers
+
+MlFlow let's you evaluate your outputs pretty simply using their sdk and the [mlflow.genai.evaluate](https://mlflow.org/docs/latest/api_reference/python_api/mlflow.genai.html#mlflow.genai.evaluate) method.
+
+The simplest way to start is by using the pre-defined scorers they have.
+
+Do this by running the following:
+
+```sh
+uv run feature_1/predefined_scorers.py
+```
+
+By passing in a predict function, alongside the dataset (which has expectations) we can use some of their in-builts.
