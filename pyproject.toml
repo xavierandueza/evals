@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dspy>=3.0.3",
     "litellm>=1.79.1",
     "mlflow>=3.5.1",
     "pandas>=2.3.3",

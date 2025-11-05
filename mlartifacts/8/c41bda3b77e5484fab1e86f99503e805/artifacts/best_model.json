@@ -1,0 +1,101 @@
+{
+  "predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "transaction": "NETFLIX.COM",
+        "reasoning": "The transaction is for a subscription service that provides streaming video content. It falls under entertainment expenses, specifically for media consumption.",
+        "account": "Subscriptions"
+      },
+      {
+        "augmented": true,
+        "transaction": "WHOLE FOODS MARKET",
+        "reasoning": "The transaction at Whole Foods Market indicates a purchase likely related to groceries or food items, as it is a grocery store known for selling organic and natural products.",
+        "account": "Groceries"
+      },
+      {
+        "transaction": "AMC THEATRES",
+        "account": "Entertainment"
+      },
+      {
+        "transaction": "AUDIBLE.COM",
+        "account": "Subscriptions"
+      },
+      {
+        "transaction": "WALGREENS",
+        "account": "Health"
+      },
+      {
+        "transaction": "SEPHORA",
+        "account": "Personal Care"
+      },
+      {
+        "transaction": "DOMINOS PIZZA",
+        "account": "Food & Drink"
+      },
+      {
+        "transaction": "PAYPAL *JOHN SMITH",
+        "account": "Transfers"
+      },
+      {
+        "transaction": "ADOBE CREATIVE CLOUD",
+        "account": "Subscriptions"
+      },
+      {
+        "transaction": "TARGET T-1234",
+        "account": "Shopping"
+      },
+      {
+        "transaction": "COINBASE",
+        "account": "Investments"
+      },
+      {
+        "transaction": "PELOTON",
+        "account": "Health"
+      },
+      {
+        "transaction": "SPOTIFY AB",
+        "account": "Subscriptions"
+      },
+      {
+        "transaction": "HBO MAX",
+        "account": "Subscriptions"
+      },
+      {
+        "transaction": "INTUIT TURBOTAX",
+        "account": "Services"
+      },
+      {
+        "transaction": "AT&T BILL",
+        "account": "Utilities"
+      }
+    ],
+    "signature": {
+      "instructions": "Categorize a bank transaction into a specific account/budget category.",
+      "fields": [
+        {
+          "prefix": "Transaction:",
+          "description": "A bank transaction description"
+        },
+        {
+          "prefix": "Reasoning: Let's think step by step in order to",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Account:",
+          "description": "A single, appropriate category"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.12",
+      "dspy": "3.0.3",
+      "cloudpickle": "3.1"
+    }
+  }
+}
