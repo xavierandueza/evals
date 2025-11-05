@@ -1,0 +1,1 @@
+{"columns":["question","source","retrieved","ndcg_at_3\/score","ndcg_at_5\/score"],"data":[["What is MLflow?",["doc_id_123"],["doc_id_123"],1.0,1.0],["How to enable autologging?",["doc_id_456","doc_id_789"],["doc_id_456","doc_id_999"],0.6131471928,0.6131471928]]}

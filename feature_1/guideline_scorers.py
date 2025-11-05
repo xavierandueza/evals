@@ -4,7 +4,7 @@ from feature_1.gst_assigner import assign_gst_to_transaction, GSTAssignmentRespo
 from feature_1.dataset import dataset
 from mlflow.genai.scorers import Correctness, Safety, Guidelines
 
-MODEL_NAME: str = "deepseek/deepseek-chat-v3.1"
+MODEL_NAME: str = "deepseek/deepseek-r1-distill-qwen-14b"
 PROMPT_NUMBER: int = 1
 TEMPERATURE: float = 0.0
 SCORER_MODEL: str = "deepseek/deepseek-chat-v3.1"
